@@ -1,0 +1,26 @@
+﻿# Python environments
+.venv/
+venv/
+.env
+.env.*
+
+# Python generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ML artifacts and local tracking data
+artifacts/
+mlruns/
+*.joblib
+*.pkl
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+output.txt
