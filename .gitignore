@@ -1,33 +1,25 @@
-﻿# Python environments
+﻿# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
 .venv/
 venv/
 .env
 .env.*
 
-# Python generated files
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.ruff_cache/
-.coverage
-htmlcov/
-
-# ML artifacts and local tracking data
-artifacts/
-mlruns/
-*.joblib
-*.pkl
-
-# Editors and operating systems
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-output.txt
-
-# Node.js
+# Node.js / Next.js
 node_modules/
 .next/
 out/
-.env*
-!.env.example
+
+# ML artifacts
+mlruns/
+artifacts/
+*.joblib
+*.pkl
+
+# Editors
+.vscode/
+.idea/
+output.txt
