@@ -24,3 +24,10 @@ mlruns/
 .DS_Store
 Thumbs.db
 output.txt
+
+# Node.js
+node_modules/
+.next/
+out/
+.env*
+!.env.example
