@@ -55,3 +55,4 @@ typing_extensions==4.16.0
 tzdata==2026.3
 wcwidth==0.8.2
 xlrd==2.0.2
+mlflow>=3.0,<4.0

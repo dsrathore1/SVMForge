@@ -23,3 +23,9 @@ artifacts/
 .vscode/
 .idea/
 output.txt
+
+# Local MLflow tracking data
+backend/mlflow.db
+backend/mlflow.db-journal
+backend/mlartifacts/
+backend/mlruns/
