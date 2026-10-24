@@ -11,3 +11,15 @@ def create_linear_svm() -> Pipeline:
             ("classifier", SVC(kernel="linear", C=1.0)),
         ]
     )
+
+def create_rbf_svm() -> Pipeline:
+    """Create an RBF-kernel SVM classification pipeline."""
+    return Pipeline(
+        steps=[
+            ("scaler", StandardScaler()),
+            (
+                "classifier",
+                SVC(kernel="rbf", C=1.0, gamma="scale"),
+            ),
+        ]
+    )

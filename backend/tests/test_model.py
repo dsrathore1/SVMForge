@@ -2,7 +2,7 @@
 from sklearn.pipeline import Pipeline
 
 from svmforge.data import load_dataset
-from svmforge.model import create_linear_svm
+from svmforge.model import create_linear_svm, create_rbf_svm
 from svmforge.preprocessing import split_dataset
 
 
@@ -35,3 +35,12 @@ def test_linear_svm_uses_expected_configuration():
     assert model.named_steps["scaler"].__class__.__name__ == "StandardScaler"
     assert model.named_steps["classifier"].kernel == "linear"
     assert model.named_steps["classifier"].C == 1.0
+
+
+def test_rbf_svm_uses_expected_configuration():
+    model = create_rbf_svm()
+
+    assert model.named_steps["scaler"].__class__.__name__ == "StandardScaler"
+    assert model.named_steps["classifier"].kernel == "rbf"
+    assert model.named_steps["classifier"].C == 1.0
+    assert model.named_steps["classifier"].gamma == "scale"
