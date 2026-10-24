@@ -20,11 +20,7 @@ def test_split_sizes_and_rows_are_preserved():
     assert len(x_test) == 86
     assert len(y_train) + len(y_validation) + len(y_test) == 569
 
-    all_indices = (
-        list(x_train.index)
-        + list(x_validation.index)
-        + list(x_test.index)
-    )
+    all_indices = list(x_train.index) + list(x_validation.index) + list(x_test.index)
     assert len(set(all_indices)) == 569
 
 
@@ -44,8 +40,8 @@ def test_splits_are_reproducible():
 def test_class_proportions_are_approximately_preserved():
     features, target = load_dataset()
 
-    x_train, x_validation, x_test, y_train, y_validation, y_test = (
-        split_dataset(features, target)
+    x_train, x_validation, x_test, y_train, y_validation, y_test = split_dataset(
+        features, target
     )
 
     original_ratio = target.mean()
@@ -95,3 +91,40 @@ def test_mismatched_feature_and_target_rows_are_rejected():
 
     with pytest.raises(ValueError, match="row counts do not match"):
         split_dataset(features, target)
+
+
+def test_train_validation_and_test_indices_are_disjoint():
+    features, target = load_dataset()
+
+    (
+        x_train,
+        x_validation,
+        x_test,
+        _,
+        _,
+        _,
+    ) = split_dataset(features, target)
+
+    train_indices = set(x_train.index)
+    validation_indices = set(x_validation.index)
+    test_indices = set(x_test.index)
+
+    assert train_indices.isdisjoint(validation_indices)
+    assert train_indices.isdisjoint(test_indices)
+    assert validation_indices.isdisjoint(test_indices)
+
+
+def test_every_split_contains_both_target_classes():
+    features, target = load_dataset()
+
+    (
+        _,
+        _,
+        _,
+        y_train,
+        y_validation,
+        y_test,
+    ) = split_dataset(features, target)
+
+    for split_target in (y_train, y_validation, y_test):
+        assert set(split_target.unique()) == set(target.unique())
