@@ -1,31 +1,53 @@
 ﻿# Python
 __pycache__/
 *.py[cod]
-.pytest_cache/
-.ruff_cache/
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
 .venv/
 venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables and secrets
 .env
 .env.*
+!.env.example
 
-# Node.js / Next.js
-node_modules/
-.next/
-out/
-
-# ML artifacts
+# ML experiments and artifacts
 mlruns/
+mlartifacts/
 artifacts/
-*.joblib
+models/
 *.pkl
+*.joblib
+mlflow.db
 
-# Editors
+# Logs
+*.log
+logs/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Code quality
+.ruff_cache/
+
+# IDE and editor
 .vscode/
 .idea/
-output.txt
 
-# Local MLflow tracking data
-backend/mlflow.db
-backend/mlflow.db-journal
-backend/mlartifacts/
-backend/mlruns/
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+output.txt
